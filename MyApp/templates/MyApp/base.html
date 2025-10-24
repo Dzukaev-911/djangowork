@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>{% block title %}Main{% endblock%}</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+            <img src="{% static 'logomain.png' %}" height="100px" width="120px" alt="logo">
+            <nav>
+                <ul>
+                    <li><a href="">Catalog</a></li>
+                    <li><a href="">Contacts</a></li>
+                    <li><a href="">Test</a></li>
+                    <li><a href="">Launcher</a></li>
+                </ul>
+            </nav>
+            <button>Registration</button>
+        </div>
+        <section class="featured-posts">
+            <h2>🔥 Избранные посты</h2>
+            <div class="post-grid">
+                {% for post in featured_posts %}
+                <div class="post-card">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.content}}</p>
+                    <span class="author">{{ post.author }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <section class="recent-posts">
+            <h2>📅 Недавние посты</h2>
+            <div class="posts-list">
+                {% for post in recent_posts %}
+                <div class="post-item">
+                    <h4>{{ post.title }}</h4>
+                    <p>{{ post.author }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+
+</html>
